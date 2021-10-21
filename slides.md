@@ -353,10 +353,12 @@ TypeScript Decorator - Metadaten für Angular
 </div>
 
 ---
+clicks: 5
+---
 
-# Hello Angular:  Komponenten
+# Hello Angular:  Komponenten I
 
-```ts {1-10|3-7}
+```ts {1-10|3-7|4|5,6|8-10|9}
 import { Component } from '@angular/core';
 
 @Component({
@@ -371,8 +373,109 @@ export class AppComponent {
 
 Aufbau einer Komponente
 
+<ul>
+  <li v-click="1">Component-Decorator</li>
+  <li v-click="2" class="!ml-8">Selektor bestimmt, wo die Komponente eingesetzt wird.</li>
+  <li v-click="3" class="!ml-8">Verweis auf externes Template und Stylesheets</li>
+  <li v-click="4">Component-Class</li>
+  <li v-click="5" class="!ml-8">Instanz-Daten (Property)</li>
+</ul>
+
+---
+
+# Hello Angular: Komponenten II
+
+```ts {all|5|6}
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  template: '<h1>{{title}}</h1>',          // inline HTML
+  styles: ['h1 { font-weight: normal; }']  // inline styles
+})
+export class AppComponent {
+  title = 'Hello Angular';
+}
+```
+
+Template und Styles können auch inline definiert werden.
+
+---
+clicks: 1
+---
+
+# Hello Angular: Template Syntax I
+
+```html {all|13}
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif,
+       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  h1, h2 {
+    font-weight: 500;
+  }
+</style>
+
+<h1>Angular Schulung</h1>
+<h2>Projekt: {{ title }}</h2>
+```
+
+<div v-click="1" class="mt-2">
+
+- `<h2>Projekt: {{title}}</h2>` ist eine *Interpolation*
+- Der Ausdruck in `{{...}}` wird ausgewertet und das Ergebnis eingesetzt als Zeichenkette
+- Symbole wie hier `title` werden in einem Kontext ausgewertet
+- Der Kontext ist in diesem Fall die Componenten-Instanz
+- Mehr zur Template-Syntax später ...
+
+</div>
+
+---
+
+# Hello Angular: Template Syntax II
+
+```html {1-10}
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif,
+       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  h1, h2 {
+    font-weight: 500;
+  }
+</style>
+
+<h1>Angular Schulung</h1>
+<h2>Projekt: {{ title }}</h2>
+```
+
+Lokale Styles können auch inline im Template definiert werden.
+
+Der Pseudo-Selektor `:host` bezieht sich dabei auf den äußeren Tag,
+der die Komponente einsetzt und instanziiert.
+
+---
+
+# Hello Angular: Zusammenfassung
+
+Komponenten sind die Hauptbausteine einer Angular-Anwendung
+
 <v-clicks>
 
-- Component-Decorator
+- Sie kapseln Datendarstellung und (zum Teil) Anwendungslogik
+- Komponenenten werden in Modulen organisiert
+- Jede Angular Anwendung hat ein Hauptmodul `AppModule` und eine Hauptkomponente, die im Hauptmodul deklariert wird und zum *Bootstrap* markiert wird.
+- Eingesetzt wird diese im globalen `index.html`
 
 </v-clicks>
+
+---
+
+# Hello Angular: Starten der Anwendung
+
+- Start auf der Konsole über `npm start` oder `ng serve`
+- Automatisierte Unit-Tests werden ausgeführt mit `npm test` oder `ng test`
+- Production-Build erzeugen mit `npm run build` oder `ng build`
