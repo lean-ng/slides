@@ -17,7 +17,7 @@
         @apply hidden;
       }
       .footnotes {
-        @apply absolute bottom-0 text-sm opacity-75;
+        @apply absolute bottom-0 mb-8 text-sm opacity-75;
       }
       .footnote-backref {
         display: none;
