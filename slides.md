@@ -19,7 +19,7 @@ From Backend to Frontend (Web).<br>
   <div><a href="https://github.com/lean-stack" target="_blank">lean-stack</a></div>
 </div>
 
-<img src="/public/profile.jpg" class="rounded-full w-40 abs-tr mt-16 mr-12"/>
+<img src="/profile.jpg" class="rounded-full w-40 abs-tr mt-16 mr-12"/>
 
 <!--
 
@@ -69,9 +69,149 @@ Instead, they serve two purposes:
     scratch.
 
  -->
- 
+
 ---
 
+# TypeScript Primer
+
+## Was ist TypeScript?
+
+TypeScript ist modernstes JavaScript - erweitert um statische Typisierung sowie
+viele weitere Sprachmittel einer modernen objekt-orientierten Programmiersprache.
+
+Zum Zeitpunkt der Einführung im Jahr 2012 griff TypeScript auf die kommenden
+Features der ECMAScript Version 6 (später ECMAScript 2015 oder einfacher 
+JavaScript 2015) vor.
+
+Aktuell folgt TypeScript in seinen Version der jeweils gültigen JavaScript-Version -
+jedoch nicht ohne eigene Weiterentwicklung auf dem Typ-System und den spezifischen
+Erweiterungen.
+
+Homepage: [www.typescriptlang.org/](https://www.typescriptlang.org/)
+
+---
+
+# TypeScript: Was ist TypeScript?
+
+```ts
+class BaseClass {
+  constructor(parA, parB) {
+    this.propA = parA; this.propB = parB;
+  }
+  method(parA) {
+    return this.propA + this.propB + parA;
+  }
+}
+class SubClass extends BaseClass {
+  constructor(parA, parC) {
+    super(parA, 17);
+    this.probC = parC;
+  }
+  anotherMethod() {
+    return super.method(21) * this.propC;
+  }
+}
+const obj = new SubClass(17, 4);
+console.log(obj.method(100));
+console.log(obj.anotherMethod());
+```
+
+<div v-click class="absolute top-30 right-20 opacity-80 text-red-400 text-xl">
+Das nicht, das ist pures JavaScript!
+</div>
+
+---
+
+# TypeScript: Statische Typisierung und Properties
+
+```ts
+
+class BaseClass {
+  private propA: number;
+  public propB: boolean;
+
+  constructor(private propC: string, propA: number, propB: boolean) {
+    this.propA = propA;
+    this.propB = propB;
+  }
+
+  method(par: number): string {
+    return `${this.propC}: ${this.propA}`;
+  }
+}
+
+const obj: BaseClass = new BaseClass('Antwort', 42, true);
+```
+
+---
+
+# TypeScript: Types, Interfaces, Enums
+
+```ts
+type Person = {
+  titel?: string;
+  vorname: string;
+  nachname: string;
+}
+type FullnameFn = (person: Person) => string;
+
+interface Firma {
+  name: string;
+  stammsitz: string;
+}
+interface MethodSignatur {
+  (a: number, b: number): number;
+}
+
+enum Filter {
+  Alle,
+  Aktive,
+  Abgeschlossene
+}
+```
+<div class="text-xs">Types vs Interfaces: 
+<a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces">Doc</a> bzw. <a href="https://stackoverflow.com/questions/37233735/interfaces-vs-types-in-typescript">Stack Overflow</a>
+</div>
+
+---
+
+# TypeScript: Generics
+
+```ts
+class Wrapper<T> {
+  constructor(public value: T) {}
+  hasValue(): boolean {
+    return typeof(value) !== 'undefined' && value !== null;
+  }
+  getValue(): T {
+    if (!hasValue) {
+      throw Exception('No value');
+    }
+    return this.value;
+  }
+}
+
+const loadFromStorage = <T>(key: string) => 
+  JSON.parse(localStorage.getItem(key)) as T;
+
+```
+
+---
+
+# TypeScript: Decorators
+
+Experimentelles Feature in TypeScript, für JavaScript existiert
+nur ein Proposal auf dem Stage 2. **Decorators** werden in Angular
+aber intensiv genutzt.
+
+```ts
+@Component({
+  template: '<span>Hooray</span>'
+})
+class HoorayComponent {}
+```
+
+---
 
 # Setup der Development-Umgebung
 
