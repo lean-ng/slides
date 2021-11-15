@@ -5,6 +5,7 @@
         "@slidev/theme-default": "^0.21.0"
     },
     "devDependencies": {
+        "@iconify-json/ri": "^1.0.1",
         "@iconify-json/twemoji": "^1.0.2"
     }
 }
