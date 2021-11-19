@@ -1,3 +1,11 @@
+---
+info: |
+  ## Angular Slides
+  Präsentation zu [Angular](https://angular.io) - Work In Progress
+
+  Repository der Slides: [lean-ng/slides](https://github.com/lean-ng/slides)
+---
+
 # Angular Kompakt
 
 Willkommen bei Ihrer Angular Schulung!
