@@ -1,4 +1,5 @@
 ---
+download: true
 info: |
   ## Angular Slides
   Präsentation zu [Angular](https://angular.io) - Work In Progress
