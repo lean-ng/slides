@@ -14,7 +14,7 @@ Willkommen bei Ihrer Angular Schulung!
 layout: 'intro'
 ---
 
-# Michael Alt
+# Michael Buchholz
 
 <div class="leading-8 opacity-80">
 Trainer und freiberuflicher Entwickler.<br>
