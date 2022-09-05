@@ -1,1 +1,2 @@
 - Two-Way Binding
+- Split slides (now possible)
